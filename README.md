@@ -27,10 +27,10 @@ Without a centralized analytics solution, these issues can lead to reduced margi
 
 1. Which vendors account for most procurement spend?
 2. Which vendors generate the highest gross profit?
-3. Why are certain vendors generating negative profit margins?
+3. Which vendors earn below the portfolio margin, and is any vendor actually losing money?
 4. Which vendors demonstrate the most efficient inventory turnover?
 5. Which products tie up the most inventory capital?
-6. Which stores carry the highest inventory investment?
+6. Which cities hold the most stock?
 7. Are procurement volumes aligned with vendor profitability?
 8. Are freight costs proportionate to procurement activity?
 
@@ -69,10 +69,10 @@ The analysis was performed using procurement, supplier, inventory, and sales dat
 
 ### Reporting
 
-* Interactive Power BI Dashboards
-* DAX Measures and KPIs
-* Automated Refresh Pipelines
-* Row-Level Security (RLS)
+* Interactive 4-page Power BI dashboard on a Fabric semantic model
+* DAX measures and KPIs
+* Bookmarks, drill-through and a last-refreshed stamp
+* Automated refresh pipelines
 
 
 
@@ -147,23 +147,23 @@ Protect a significant portion of portfolio profitability.
 
 
 
-## Q3. Why Are Certain Vendors Generating Negative Profit Margins?
+## Q3. Which Vendors Earn Below the Portfolio Margin, and Is Any Vendor Actually Losing Money?
 
 ### Observation
 
-Several vendors operate at negative profit margins despite active sales volumes.
+Only 13 small vendors lose money, about $33K combined (0.03% of gross profit). The real margin gap is in 12 large vendors (at least 1% of spend each) that earn below the 28.7% portfolio margin, including Diageo (25.9%), Jim Beam (24.1%) and Pernod Ricard (25.3%).
 
 ### Root Cause
 
-High purchase costs and freight expenses reduce profitability.
+High purchase costs on high-volume vendors. Margin is measured as weighted margin (gross profit / sales), not an average of product margins, which exaggerated tiny vendors.
 
 ### Recommendation
 
-Review pricing agreements, freight contracts, and purchasing strategies.
+Renegotiate cost prices and terms with the below-average vendors, starting with Diageo, Jim Beam and Pernod Ricard.
 
 ### Expected Business Impact
 
-Potential recovery of lost margin and improved profitability.
+Up to $7.4M of additional gross profit if these vendors reached the portfolio average (an upper bound, not a forecast).
 
 
 
@@ -171,59 +171,58 @@ Potential recovery of lost margin and improved profitability.
 
 ### Observation
 
-BACARDI and JIM BEAM demonstrate the strongest inventory turnover performance.
+Portfolio turnover is 6.1x (about 60 days of stock), measured as COGS / average inventory at cost. Among large vendors, Bacardi (8.3x) and Brown-Forman (8.1x) lead; Ultra Beverage (4.0x) and Martignetti (5.1x) lag.
 
 ### Root Cause
 
-Higher demand and efficient inventory replenishment.
+Faster sell-through and replenishment for the leaders, slower sell-through for the laggards.
 
 ### Recommendation
 
-Increase focus on high-turnover vendors while optimizing slow-moving inventory.
+Reduce reorder quantities for slow-turning vendors and keep the ordering cadence for fast ones.
 
 ### Expected Business Impact
 
-Reduced inventory carrying costs and improved inventory productivity.
-
+Frees working capital and lowers holding costs.
 
 
 ## Q5. Which Products Tie Up the Most Inventory Capital?
 
 ### Observation
 
-Jack Daniels, Grey Goose, Ketel One, and Jameson account for over $5M in inventory value.
+$10.6M (19% of the $55.4M closing stock at cost) has 180+ days of supply, including about $0.4M in brands with no sales. The largest single products (Jack Daniels, Jameson, Grey Goose, Ketel One) hold only about $2.8M at retail, so there is no single-product dependence.
 
 ### Root Cause
 
-Large inventory positions relative to sales velocity.
+A long tail of brands whose stock is high relative to sales; reorder points are not tied to sales velocity.
 
 ### Recommendation
 
-Optimize reorder points and replenishment policies.
+Lower reorder points on 180+ day items and mark down or return no-sales stock.
 
 ### Expected Business Impact
 
-Release working capital and improve inventory efficiency.
+Up to $10.6M of working capital is tied up (not all of it releasable).
 
 
 
-## Q6. Which Stores Carry the Highest Inventory Investment?
+## Q6. Which Cities Hold the Most Stock?
 
 ### Observation
 
-A small number of stores account for a significant share of total inventory investment.
+Inventory is well spread: Mountmend holds 12.2%, Eanverness 8.5% and Doncaster 7.8%. The top 3 cities hold 28.5% across 67 cities.
 
 ### Root Cause
 
-Inventory allocation is heavily concentrated.
+Stock follows the store network; there is no concentration problem.
 
 ### Recommendation
 
-Review replenishment policies and redistribute inventory where appropriate.
+No rebalancing needed. Monitor quarterly and focus on slow-moving stock instead.
 
 ### Expected Business Impact
 
-Reduce overstock risk and improve inventory utilization.
+Low risk.
 
 
 
@@ -251,48 +250,38 @@ Improve procurement effectiveness and portfolio profitability.
 
 ### Observation
 
-Several high-spend vendors operate above the network freight benchmark.
+Freight is a flat 0.51% of spend for every vendor (range about 0.46% to 0.54%), $1.64M in total.
 
 ### Root Cause
 
-Shipment frequencies and freight agreements are not fully optimized.
+Freight is charged in proportion to purchases, so no vendor stands out.
 
 ### Recommendation
 
-Review freight contracts and consolidate shipments where possible.
+No vendor-specific action; review freight terms only at contract renewal.
 
 ### Expected Business Impact
 
-Reduce logistics costs and improve procurement efficiency.
-
+No material savings available from freight; effort is better spent on margin and slow stock.
 
 
 # Dashboard Pages
 
-### Page 1 – Procurement Analytics
+### Page 1 - Overview
 
-* Procurement Spend
-* Vendor Analysis
-* Freight Analysis
+KPIs (spend, gross profit, weighted margin, inventory, turnover, freight), spend treemap, gross profit by vendor, inventory by city, turnover by vendor, and an attention panel.
 
-### Page 2 – Inventory Analytics
+### Page 2 - Supplier Risk
 
-* Inventory Value
-* Product Analysis
-* Store Analysis
+Spend-vs-margin quadrant, spend concentration (Pareto), renegotiation shortlist, and a loss-making vendor check.
 
-### Page 3 – Supplier Performance Analytics
+### Page 3 - Inventory & Procurement
 
-* Profitability Analysis
-* Margin Analysis
-* Inventory Turnover Analysis
+Stock by product and city, stock health by days of supply, units purchased, freight as % of spend, and procurement actions.
 
-### Page 4 – Business Insights & Recommendations
+### Page 4 - Insights & Actions
 
-* Executive Summary
-* Root Cause Analysis
-* Recommended Actions
-* Expected Business Impact
+Eight business questions with findings, recommended actions and expected impact. A hidden Vendor Detail page supports drill-through. Every page has reset-filter bookmarks and a last-refreshed stamp.
 
 
 
@@ -321,11 +310,10 @@ Reduce logistics costs and improve procurement efficiency.
 
 # Business Impact
 
-* Identified supplier concentration risk where Top 3 vendors accounted for 32% of procurement spend.
-* Uncovered negative-margin vendor relationships causing profit leakage.
-* Identified inventory concentration across products and stores.
-* Highlighted opportunities for freight cost optimization.
-* Provided actionable recommendations to improve profitability, reduce supplier dependency, and optimize inventory investment.
+* Identified supplier concentration risk: the top 3 vendors account for 32% of procurement spend.
+* Showed that only 13 small vendors lose money ($33K), while up to $7.4M of margin upside sits with 12 large vendors earning below the 28.7% portfolio margin.
+* Found $10.6M (19%) of inventory with 180+ days of supply, including $0.4M with no sales.
+* Showed that inventory is well spread across 67 cities and that freight is a flat 0.51% of spend, so neither needs action.
 
 
 
@@ -334,22 +322,24 @@ Reduce logistics costs and improve procurement efficiency.
 
 ### Business Performance Overview
 
-<img width="1192" height="682" alt="image" src="https://github.com/user-attachments/assets/56d4db35-5d55-410a-bbf3-acfda80baee2" />
+<img width="1135" height="637" alt="image" src="https://github.com/user-attachments/assets/f2121913-32f2-4441-ba65-a197361c7d8c" />
 
 
 ### Supplier Risk and vendor performance
 
-<img width="1187" height="662" alt="image" src="https://github.com/user-attachments/assets/487200d7-2dbd-4bfb-aa06-8d144f146fb3" />
+<img width="1132" height="635" alt="image" src="https://github.com/user-attachments/assets/529204d5-b2f6-41b5-b0f9-6dc16c5417f4" />
+
 
 
 ### Inventory & Procurement Optimization
 
-<img width="1185" height="667" alt="image" src="https://github.com/user-attachments/assets/49c8d690-1c5f-4704-8bf4-d083d3d4b92e" />
+<img width="1118" height="626" alt="image" src="https://github.com/user-attachments/assets/4d3cc9b1-f6a2-4fcf-b54b-6425088aaedf" />
+
 
 
 ### Business Insights Dashboard
 
-<img width="1177" height="662" alt="image" src="https://github.com/user-attachments/assets/51a3debe-5894-4c71-a9f9-c06d98cdd7f2" />
+<img width="1104" height="622" alt="image" src="https://github.com/user-attachments/assets/5e9c5d64-a182-45fd-8336-e042ecc34926" />
 
 
 ### Fabric Pipeline

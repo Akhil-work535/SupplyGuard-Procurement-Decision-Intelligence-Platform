@@ -322,7 +322,7 @@ Eight business questions with findings, recommended actions and expected impact.
 
 ### Business Performance Overview
 
-<img width="1135" height="637" alt="image" src="https://github.com/user-attachments/assets/f2121913-32f2-4441-ba65-a197361c7d8c" />
+<img width="1157" height="664" alt="image" src="https://github.com/user-attachments/assets/cf0f4087-d203-443f-8b04-b9e5089920d7" />
 
 
 ### Supplier Risk and vendor performance
